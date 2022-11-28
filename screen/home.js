@@ -39,42 +39,7 @@ export default class HomeScreen extends Component {
       });
   };
 
-  likedMovie = () => {
-    const url = this.state.ngrok_url + '/like';
-    axios
-      .get(url)
-      .then((response) => {
-        this.getMovie();
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
-  dislikedMovie = () => {
-    const url = this.state.ngrok_url + '/dislike';
-    axios
-      .get(url)
-      .then((response) => {
-        this.getMovie();
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
-  notWatched = () => {
-    const url = this.state.ngrok_url + '/did_not_watch';
-    axios
-      .get(url)
-      .then((response) => {
-        this.getMovie();
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
+  
   render() {
     return (
       <View style={{flex:1}}>
@@ -130,7 +95,8 @@ export default class HomeScreen extends Component {
             score={5}
             style={{ width: RFValue(200), height: RFValue(40) }}
           />
-
+<View
+            style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
           <TouchableOpacity onPress={this.likedMovie}>
             <Image
               style={{ width: RFValue(50), height: RFValue(50) }}
@@ -149,6 +115,7 @@ export default class HomeScreen extends Component {
               source={require('../assets/didNotWatch.png')}
             />
           </TouchableOpacity>
+                      </View>
         </ImageBackground>
       </View>
     );
